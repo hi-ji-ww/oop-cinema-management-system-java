@@ -24,4 +24,4 @@ I used **Google Gemini** as an intellectual assistant for:
 * **Documentation:** Javadoc
 
 ---
-*Developed by Sergey Laskov, ETU "LETI" 2025.*
+*Developed by Sergey Laskov, ETU "LETI" 2025.
