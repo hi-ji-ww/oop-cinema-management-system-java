@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cinema>
+    <sessions>
+        <session date="15.12.2025" film="Интерстеллар" hall="Зал 1" price="350 руб (edited) (edited)" time="18:00"/>
+        <session date="15.12.2025" film="Интерстеллар" hall="Зал 1" price="400 руб" time="21:00"/>
+        <session date="16.12.2025" film="Крестный отец" hall="Зал 2" price="300 руб" time="19:30"/>
+        <session date="17.12.2025" film="Матрица" hall="Зал 3" price="350 руб" time="20:00"/>
+    </sessions>
+</cinema>

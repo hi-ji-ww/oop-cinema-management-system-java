@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cinema>
+    <films>
+        <film director="Кристофер Нолан" duration="169 мин" genre="Фантастика" title="Интерстеллар (edited)" year="2014"/>
+        <film director="Фрэнсис Коппола" duration="175 мин" genre="Криминал" title="Крестный отец (edited)" year="1972"/>
+        <film director="Фрэнк Дарабонт" duration="142 мин" genre="Драма" title="Побег из Шоушенка (edited)" year="1994"/>
+        <film director="Вачовски" duration="136 мин" genre="Фантастика" title="Матрица (edited)" year="1999"/>
+        <film director="Роберт Земекис" duration="142 мин" genre="Драма" title="Форрест Гамп (edited)" year="1994"/>
+    </films>
+</cinema>

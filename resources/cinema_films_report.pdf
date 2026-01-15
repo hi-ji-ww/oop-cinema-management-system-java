@@ -1,0 +1,104 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2800 >>
+stream
+BT
+/F2 28 Tf
+50 750 Td
+(CINEMA MANAGEMENT REPORT) Tj
+0 -40 Td
+/F1 12 Tf
+(Cinema Administration System) Tj
+0 -15 Td
+(Laboratory Work #7 - Report Generation) Tj
+0 -40 Td
+/F2 16 Tf
+(CINEMA STATISTICS) Tj
+0 -30 Td
+/F1 11 Tf
+(Total Films in Database: 5) Tj
+0 -15 Td
+(Total Sessions Scheduled: 4) Tj
+0 -15 Td
+(Total Tickets Available: 5) Tj
+0 -15 Td
+(Tickets Sold: 2) Tj
+0 -15 Td
+(Tickets Reserved: 1) Tj
+0 -15 Td
+(Free Tickets: 2) Tj
+0 -30 Td
+(Estimated Income: 700 rubles) Tj
+0 -40 Td
+/F2 16 Tf
+(FEATURED FILMS) Tj
+0 -25 Td
+/F1 10 Tf
+(1. Interstellar - Christopher Nolan (2014)) Tj
+0 -12 Td
+(2. The Godfather - Francis Ford Coppola (1972)) Tj
+0 -12 Td
+(3. The Shawshank Redemption - Frank Darabont (1994)) Tj
+0 -12 Td
+(4. The Matrix - The Wachowskis (1999)) Tj
+0 -12 Td
+(5. Forrest Gump - Robert Zemeckis (1994)) Tj
+0 -30 Td
+/F2 16 Tf
+(UPCOMING SESSIONS) Tj
+0 -25 Td
+/F1 10 Tf
+(* Interstellar - 15.12.2025 18:00 (Hall 1) - 350 RUB) Tj
+0 -12 Td
+(* Interstellar - 15.12.2025 21:00 (Hall 1) - 400 RUB) Tj
+0 -12 Td
+(* The Godfather - 16.12.2025 19:30 (Hall 2) - 300 RUB) Tj
+0 -12 Td
+(* The Matrix - 17.12.2025 20:00 (Hall 3) - 350 RUB) Tj
+0 -40 Td
+/F2 14 Tf
+(FINANCIAL SUMMARY) Tj
+0 -25 Td
+/F1 11 Tf
+(Current Revenue: 700 rubles) Tj
+0 -15 Td
+(Potential Revenue: 1050 rubles) Tj
+0 -30 Td
+/F1 9 Tf
+(Report generated automatically on 13.11.2025) Tj
+0 -12 Td
+(User: hi-ji-ww) Tj
+0 -12 Td
+(System: Cinema Management System v2.0) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000244 00000 n
+0000003095 00000 n
+0000003183 00000 n
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3275
+%%EOF

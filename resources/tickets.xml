@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cinema>
+    <tickets>
+        <ticket saleTime="14:30" seat="A1" session="Интерстеллар 18:00" status="Продан"/>
+        <ticket saleTime="14:35" seat="A2" session="Интерстеллар 18:00" status="Продан"/>
+        <ticket saleTime="-" seat="A3" session="Интерстеллар 18:00" status="Свободно"/>
+        <ticket saleTime="15:20" seat="B5" session="Крестный отец 19:30" status="Забронирован"/>
+        <ticket saleTime="-" seat="C2" session="Матрица 20:00" status="Свободно"/>
+    </tickets>
+</cinema>
