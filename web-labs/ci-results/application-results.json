@@ -1,0 +1,213 @@
+{
+  "platform": "GitHub Actions Ubuntu 24.04",
+  "checks": [
+    {
+      "name": "tools",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "maven-install",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "webapp-archetype",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "javadoc",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "Mockito test suite",
+      "passed": true,
+      "detail": "{'tests': '6', 'failures': '0', 'errors': '0', 'skipped': '0', 'time': '0.583'}"
+    },
+    {
+      "name": "surefire-report",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "keytool",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "JSP home",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Servlet all",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Servlet drama",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Servlet comedy",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Servlet invalid",
+      "passed": true,
+      "detail": "{'status': 400, 'expected': 400}"
+    },
+    {
+      "name": "Russian resources",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "English resources",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Ordinary tickets",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Student tickets",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Invalid ticket count",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Non-numeric ticket count",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "HTTPS unauthenticated",
+      "passed": true,
+      "detail": "{'status': 401, 'expected': 401}"
+    },
+    {
+      "name": "Viewer cabinet",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Viewer forbidden admin",
+      "passed": true,
+      "detail": "{'status': 403, 'expected': 403}"
+    },
+    {
+      "name": "Admin panel",
+      "passed": true,
+      "detail": "{'status': 200, 'expected': 200}"
+    },
+    {
+      "name": "Second HTTP port",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Browser viewer authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Browser session counter",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "browser-cookie-store",
+      "passed": true,
+      "detail": "exit 0"
+    },
+    {
+      "name": "Browser persistent cookies",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "GWT RPC drama",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "GWT RPC comedy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All HTTP and browser checks",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "screenshots": [
+    "lab01_tools.png",
+    "lab02_maven_install.png",
+    "lab02_archetype.png",
+    "lab03_javadoc_build.png",
+    "lab09_mockito.png",
+    "lab06_keytool.png",
+    "lab02_app.png",
+    "lab01_port8081.png",
+    "lab03_all.png",
+    "lab03_drama.png",
+    "lab04_ru.png",
+    "lab04_en.png",
+    "lab05_success.png",
+    "lab05_error.png",
+    "lab06_viewer.png",
+    "lab06_forbidden.png",
+    "lab06_admin.png",
+    "lab07_first.png",
+    "lab07_second.png",
+    "lab07_browser_cookies.png",
+    "lab08_all.png",
+    "lab08_drama.png",
+    "lab08_comedy.png"
+  ],
+  "junit": {
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.583"
+  },
+  "wars": {
+    "lab02": [
+      "lab02/target/lab02.war"
+    ],
+    "lab03": [
+      "lab03/target/lab03.war"
+    ],
+    "lab04": [
+      "lab04/target/lab04.war"
+    ],
+    "lab05": [
+      "lab05/target/lab05.war"
+    ],
+    "lab06": [
+      "lab06/target/lab06.war"
+    ],
+    "lab07": [
+      "lab07/target/lab07.war"
+    ],
+    "lab08": [
+      "lab08/target/lab08.war"
+    ],
+    "lab09": [
+      "lab09/target/lab09.war"
+    ]
+  }
+}
