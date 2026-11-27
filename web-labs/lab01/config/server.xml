@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="-1" shutdown="SHUTDOWN">
+ <Service name="Catalina">
+  <Connector address="127.0.0.1" port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
+  <Connector address="127.0.0.1" port="8081" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
+  <Connector address="127.0.0.1" port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" SSLEnabled="true">
+   <SSLHostConfig><Certificate certificateKeyAlias="cinema" certificateKeystoreFile="conf/cinema.p12" certificateKeystorePassword="__GENERATE_STORE_PASSWORD__" certificateKeystoreType="PKCS12"/></SSLHostConfig>
+  </Connector>
+  <Engine name="Catalina" defaultHost="localhost">
+   <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+   <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true"/>
+  </Engine>
+ </Service>
+ <GlobalNamingResources>
+  <Resource name="UserDatabase" auth="Container" type="org.apache.catalina.UserDatabase" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" pathname="conf/tomcat-users.xml"/>
+ </GlobalNamingResources>
+</Server>

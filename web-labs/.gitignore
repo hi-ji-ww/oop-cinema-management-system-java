@@ -1,0 +1,8 @@
+target/
+*.p12
+*.log
+.idea/
+.metadata/
+runtime-ci/
+evidence/
+.env

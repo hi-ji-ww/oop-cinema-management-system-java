@@ -1,0 +1,1 @@
+<%@ page contentType="text/html; charset=UTF-8" %><!doctype html><html lang="ru"><meta charset="UTF-8"><title>Личный кабинет</title><h1>Личный кабинет зрителя</h1><p>Доступ разрешён пользователям с ролью viewer.</p><p>Пользователь: <%= request.getUserPrincipal().getName() %></p><a href="../admin/panel.jsp">Панель администратора</a></html>

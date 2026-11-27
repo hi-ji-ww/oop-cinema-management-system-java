@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users xmlns="http://tomcat.apache.org/xml" version="1.0">
+ <role rolename="viewer"/><role rolename="admin"/>
+ <!-- Искусственные учебные учетные записи, только для локального стенда. -->
+ <user username="viewer" password="__GENERATE_VIEWER_PASSWORD__" roles="viewer"/>
+ <user username="admin" password="__GENERATE_ADMIN_PASSWORD__" roles="viewer,admin"/>
+</tomcat-users>

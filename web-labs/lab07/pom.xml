@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <parent><groupId>ru.etu.laskov</groupId><artifactId>cinema-labs</artifactId><version>1.0.0</version></parent>
+ <artifactId>lab07</artifactId><packaging>war</packaging>
+ <dependencies>
+  <!-- Servlet API предоставляет Tomcat, поэтому библиотека не входит в WAR. -->
+  <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>4.0.1</version><scope>provided</scope></dependency>
+
+ </dependencies>
+ <build><finalName>lab07</finalName><plugins>
+  <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId></plugin>
+  <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId></plugin>
+
+ </plugins></build>
+</project>

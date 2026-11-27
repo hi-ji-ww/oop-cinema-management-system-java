@@ -1,0 +1,1 @@
+<%@ page contentType="text/html; charset=UTF-8" %><!doctype html><html lang="ru"><meta charset="UTF-8"><title>Администратор</title><h1>Панель администратора</h1><p>Доступ разрешён только роли admin.</p></html>

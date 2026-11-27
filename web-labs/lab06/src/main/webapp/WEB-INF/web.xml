@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="4.0">
+ <display-name>Кинотеатр Лабораторная 6</display-name>
+
+ <security-constraint><web-resource-collection><web-resource-name>Cabinet</web-resource-name><url-pattern>/protected/*</url-pattern></web-resource-collection>
+  <auth-constraint><role-name>viewer</role-name></auth-constraint><user-data-constraint><transport-guarantee>CONFIDENTIAL</transport-guarantee></user-data-constraint></security-constraint>
+ <security-constraint><web-resource-collection><web-resource-name>Administration</web-resource-name><url-pattern>/admin/*</url-pattern></web-resource-collection>
+  <auth-constraint><role-name>admin</role-name></auth-constraint><user-data-constraint><transport-guarantee>CONFIDENTIAL</transport-guarantee></user-data-constraint></security-constraint>
+ <login-config><auth-method>BASIC</auth-method><realm-name>Cinema</realm-name></login-config>
+ <security-role><role-name>viewer</role-name></security-role><security-role><role-name>admin</role-name></security-role>
+ <welcome-file-list><welcome-file>index.jsp</welcome-file></welcome-file-list>
+</web-app>

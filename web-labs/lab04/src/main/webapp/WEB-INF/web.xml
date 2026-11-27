@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="4.0">
+ <display-name>Кинотеатр Лабораторная 4</display-name>
+
+ <servlet><servlet-name>Catalog</servlet-name><servlet-class>ru.etu.cinema.LocalizedServlet</servlet-class>
+  <init-param><param-name>cinemaName</param-name><param-value>Кинотеатр Север</param-value></init-param>
+ </servlet><servlet-mapping><servlet-name>Catalog</servlet-name><url-pattern>/catalog</url-pattern></servlet-mapping>
+ <welcome-file-list><welcome-file>index.html</welcome-file></welcome-file-list>
+</web-app>
