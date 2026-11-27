@@ -36,7 +36,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,
  org.eclipse.ui,org.eclipse.jface,org.eclipse.swt,
  org.eclipse.wst.server.core,org.eclipse.jst.server.tomcat.core,
- org.eclipse.debug.core
+ org.eclipse.debug.core,org.eclipse.jdt.launching,org.eclipse.jdt.core
 Bundle-ActivationPolicy: lazy
 
 '''

@@ -6,6 +6,9 @@ import java.util.*;
 import org.eclipse.core.resources.*;
 import org.eclipse.core.runtime.*;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.jdt.launching.JavaRuntime;
+import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.*;
@@ -76,6 +79,14 @@ public final class Bootstrap implements IStartup {
   log("SERVER configured "+server.getId());
   showPreference("runtime", "lab01_eclipse_runtime.png");
   showPreference("maven", "lab01_eclipse_maven.png");
+  // Explicit bootstrap entries avoid an empty default WTP launch classpath.
+  ILaunchConfigurationWorkingCopy launch=server.getLaunchConfiguration(true,new NullProgressMonitor()).getWorkingCopy();
+  launch.setAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH,false);
+  launch.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,List.of(
+   JavaRuntime.newArchiveRuntimeClasspathEntry(new org.eclipse.core.runtime.Path(TOMCAT+"/bin/bootstrap.jar")).getMemento(),
+   JavaRuntime.newArchiveRuntimeClasspathEntry(new org.eclipse.core.runtime.Path(TOMCAT+"/bin/tomcat-juli.jar")).getMemento()));
+  launch.doSave();
+  Files.writeString(OUT.resolve("eclipse-launch.xml"),server.getLaunchConfiguration(true,new NullProgressMonitor()).getMemento());
   server.start(ILaunchManager.RUN_MODE,new NullProgressMonitor());
   long deadline=System.currentTimeMillis()+120000;
   while(server.getServerState()!=IServer.STATE_STARTED&&System.currentTimeMillis()<deadline)Thread.sleep(500);
