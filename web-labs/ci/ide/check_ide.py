@@ -23,8 +23,7 @@ def main():
  (OUT/'server-lab01.xml').write_text(server_xml)
  # The helper bundle drives the normal Eclipse server APIs and records actual UI images.
  classes=R/'helper-classes';classes.mkdir(exist_ok=True)
- jars=list((eclipse/'plugins').glob('*.jar'))
- cp=os.pathsep.join(str(p) for p in jars)
+ cp=str(eclipse/'plugins/*')
  p=subprocess.run(['javac','-encoding','UTF-8','-cp',cp,'-d',str(classes),str(ROOT/'ci/ide/Bootstrap.java')],capture_output=True,text=True)
  (OUT/'helper-compile.log').write_text(p.stdout+p.stderr)
  if p.returncode:raise RuntimeError(p.stderr)
