@@ -16,3 +16,9 @@
 Снимки экрана и исходные журналы находятся в артефакте `web-labs-evidence`.
 Интеграция Eclipse/Tomcat проверяется отдельным workflow в ветке
 `web-labs-eclipse-check`.
+
+Успешная проверка Eclipse: [GitHub Actions, 27.11.2026](https://github.com/hi-ji-ww/oop-cinema-management-system-java/actions/runs/45998944971).
+Проверенный коммит этой ветки: `1c355e4d2f1d0ed3d223d40cff0d44081d3ea0ee`.
+В `ide-results.json` записаны фактические ответы HTTP 200 на портах 8080
+и 8081. Сервер запущен и остановлен через Eclipse WTP, страницы настроек
+Tomcat и Maven сохранены в артефакте `web-labs-ide-evidence`.

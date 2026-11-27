@@ -1,0 +1,8 @@
+{
+  "platform": "Eclipse JEE 2025-06 on GitHub Actions Ubuntu",
+  "passed": true,
+  "ports": {
+    "8080": 200,
+    "8081": 200
+  }
+}
