@@ -1,6 +1,7 @@
 from pathlib import Path
 import os,subprocess,time,json,shutil,tarfile,urllib.request,urllib.parse,urllib.error,ssl,base64,shlex,html,traceback,secrets
 import xml.etree.ElementTree as ET
+import zipfile
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1];os.chdir(ROOT)
@@ -57,6 +58,10 @@ def capture(page,name):
 def run():
  terminal('tools','java -version; mvn -v','lab01_tools.png',60)
  terminal('maven-install','mvn -B -Dstyle.color=never clean install','lab02_maven_install.png')
+ with zipfile.ZipFile(ROOT/'lab02/target/lab02.war') as war:
+  (E/'war-lab02.txt').write_text('\n'.join(war.namelist()),encoding='utf-8')
+ scaffold=Path(os.environ['RUNNER_TEMP'])/'cinema-archetype-check';scaffold.mkdir(exist_ok=True)
+ terminal('webapp-archetype','cd '+shlex.quote(str(scaffold))+' && mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.3.1:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 -DgroupId=ru.etu.laskov -DartifactId=webapp-template -Dversion=1.0.0 -DinteractiveMode=false','lab02_archetype.png',150)
  terminal('javadoc','mvn -B -Dstyle.color=never javadoc:javadoc -Ddoclint=none','lab03_javadoc_build.png',300)
  reports=list((ROOT/'lab09/target/surefire-reports').glob('TEST-*.xml'))
  assert reports,'Surefire reports missing'
@@ -102,22 +107,22 @@ def run():
    except Exception:pass
    time.sleep(1)
   else:raise RuntimeError('Tomcat not ready')
-  http_check('JSP home','lab02/','����⥠�� �����')
-  http_check('Servlet all','lab03/catalog','������� ᥠ�ᮢ: 3')
-  http_check('Servlet drama','lab03/catalog?genre=drama','������� ᥠ�ᮢ: 2')
-  http_check('Servlet comedy','lab03/catalog?genre=comedy','������� ᥠ�ᮢ: 1')
+  http_check('JSP home','lab02/','Кинотеатр Север')
+  http_check('Servlet all','lab03/catalog','Найдено сеансов: 3')
+  http_check('Servlet drama','lab03/catalog?genre=drama','Найдено сеансов: 2')
+  http_check('Servlet comedy','lab03/catalog?genre=comedy','Найдено сеансов: 1')
   http_check('Servlet invalid','lab03/catalog?genre=bad',status=400)
-  http_check('Russian resources','lab04/catalog?lang=ru','��� ����⥠�� �����')
+  http_check('Russian resources','lab04/catalog?lang=ru','Афиша кинотеатра Север')
   http_check('English resources','lab04/catalog?lang=en','Sever Cinema Listings')
   http_check('Ordinary tickets','lab05/','1200.00',data={'count':'3'})
   http_check('Student tickets','lab05/','960.00',data={'count':'3','student':'on'})
-  http_check('Invalid ticket count','lab05/','�� 1 �� 10',data={'count':'0'})
-  http_check('Non-numeric ticket count','lab05/','������ 楫��',data={'count':'abc'})
+  http_check('Invalid ticket count','lab05/','от 1 до 10',data={'count':'0'})
+  http_check('Non-numeric ticket count','lab05/','Введите целое',data={'count':'abc'})
   tls=ssl.create_default_context(cafile=str(pem));secure='https://127.0.0.1:8443/lab06/'
   http_check('HTTPS unauthenticated',secure+'protected/account.jsp',status=401,context=tls)
-  http_check('Viewer cabinet',secure+'protected/account.jsp','���� ������� ��⥫�',auth='viewer:'+VIEWER_PASSWORD,context=tls)
+  http_check('Viewer cabinet',secure+'protected/account.jsp','Личный кабинет зрителя',auth='viewer:'+VIEWER_PASSWORD,context=tls)
   http_check('Viewer forbidden admin',secure+'admin/panel.jsp',status=403,auth='viewer:'+VIEWER_PASSWORD,context=tls)
-  http_check('Admin panel',secure+'admin/panel.jsp','������ �����������',auth='admin:'+ADMIN_PASSWORD,context=tls)
+  http_check('Admin panel',secure+'admin/panel.jsp','Панель администратора',auth='admin:'+ADMIN_PASSWORD,context=tls)
   with urllib.request.urlopen('http://127.0.0.1:8081/lab02/') as r:record('Second HTTP port',r.status==200)
   with sync_playwright() as pw:
    browser=pw.chromium.launch(headless=True,args=['--disable-gpu','--disable-dev-shm-usage'])
@@ -125,22 +130,22 @@ def run():
    page=context.new_page()
    for url,name in [('http://127.0.0.1:8080/lab02/','lab02_app.png'),('http://127.0.0.1:8081/lab02/','lab01_port8081.png'),('http://127.0.0.1:8080/lab03/catalog','lab03_all.png'),('http://127.0.0.1:8080/lab03/catalog?genre=drama','lab03_drama.png'),('http://127.0.0.1:8080/lab04/catalog?lang=ru','lab04_ru.png'),('http://127.0.0.1:8080/lab04/catalog?lang=en','lab04_en.png')]:
     page.goto(url);capture(page,name)
-   page.goto('http://127.0.0.1:8080/lab05/');page.locator('[name=count]').fill('3');page.locator('[name=student]').check();page.get_by_role('button',name='��������').click();page.get_by_text('960.00 ��.').wait_for();capture(page,'lab05_success.png')
-   page.locator('[name=count]').fill('0');page.get_by_role('button',name='��������').click();page.get_by_text('������⢮ ����⮢ ������ ���� �� 1 �� 10').wait_for();capture(page,'lab05_error.png')
+   page.goto('http://127.0.0.1:8080/lab05/');page.locator('[name=count]').fill('3');page.locator('[name=student]').check();page.get_by_role('button',name='Рассчитать').click();page.get_by_text('960.00 руб.').wait_for();capture(page,'lab05_success.png')
+   page.locator('[name=count]').fill('0');page.get_by_role('button',name='Рассчитать').click();page.get_by_text('Количество билетов должно быть от 1 до 10').wait_for();capture(page,'lab05_error.png')
    auth=browser.new_context(viewport={'width':1100,'height':800},http_credentials={'username':'viewer','password':VIEWER_PASSWORD})
-   secured=auth.new_page();secured.goto(secure+'protected/account.jsp');secured.get_by_text('���� ������� ��⥫�').wait_for();capture(secured,'lab06_viewer.png')
+   secured=auth.new_page();secured.goto(secure+'protected/account.jsp');secured.get_by_text('Личный кабинет зрителя').wait_for();capture(secured,'lab06_viewer.png')
    response=secured.goto(secure+'admin/panel.jsp');record('Browser viewer authorization',response.status==403);capture(secured,'lab06_forbidden.png');auth.close()
    admin=browser.new_context(viewport={'width':1100,'height':800},http_credentials={'username':'admin','password':ADMIN_PASSWORD})
-   ap=admin.new_page();ap.goto(secure+'admin/panel.jsp');ap.get_by_text('������ �����������').wait_for();capture(ap,'lab06_admin.png');admin.close()
-   page.goto('http://127.0.0.1:8080/lab07/');page.locator('[name=name]').fill('��ࣥ�');page.locator('[name=color]').fill('#dceeff');page.get_by_role('button',name='���࠭���').click();page.get_by_text('������⢮ ��ࠢ�� ��� � ��ᨨ: 1').wait_for();capture(page,'lab07_first.png')
-   page.get_by_role('link',name='�������� ����ன��').click();page.locator('[name=name]').fill('����');page.locator('[name=color]').fill('#ffddcc');page.get_by_role('button',name='���࠭���').click();page.get_by_text('������⢮ ��ࠢ�� ��� � ��ᨨ: 2').wait_for();capture(page,'lab07_second.png');page.reload();assert '��ᨨ: 2' in page.inner_text('body');record('Browser session counter',True)
+   ap=admin.new_page();ap.goto(secure+'admin/panel.jsp');ap.get_by_text('Панель администратора').wait_for();capture(ap,'lab06_admin.png');admin.close()
+   page.goto('http://127.0.0.1:8080/lab07/');page.locator('[name=name]').fill('Сергей');page.locator('[name=color]').fill('#dceeff');page.get_by_role('button',name='Сохранить').click();page.get_by_text('Количество отправок формы в сессии: 1').wait_for();capture(page,'lab07_first.png')
+   page.get_by_role('link',name='Изменить настройки').click();page.locator('[name=name]').fill('Иван');page.locator('[name=color]').fill('#ffddcc');page.get_by_role('button',name='Сохранить').click();page.get_by_text('Количество отправок формы в сессии: 2').wait_for();capture(page,'lab07_second.png');page.reload();assert 'сессии: 2' in page.inner_text('body');record('Browser session counter',True)
    cookies=[{k:v for k,v in cookie.items() if k in ['name','value','domain','path','httpOnly','secure','expires']} for cookie in context.cookies() if cookie['name'] in ['cinemaName','cinemaColor']]
    (E/'cookies.json').write_text(json.dumps(cookies,ensure_ascii=False,indent=2),encoding='utf-8')
    terminal('browser-cookie-store','cat evidence/cookies.json','lab07_browser_cookies.png',30)
-   record('Browser persistent cookies',len(cookies)==2 and any(c['name']=='cinemaName' and urllib.parse.unquote_plus(c['value'])=='����' for c in cookies))
-   page.goto('http://127.0.0.1:8080/lab08/');page.get_by_text('������� ᥠ�ᮢ: 3').wait_for(timeout=60000);capture(page,'lab08_all.png')
-   page.locator('select').select_option('drama');page.get_by_role('button',name='��������').click();page.get_by_text('������� ᥠ�ᮢ: 2').wait_for();capture(page,'lab08_drama.png');record('GWT RPC drama',True)
-   page.locator('select').select_option('comedy');page.get_by_role('button',name='��������').click();page.get_by_text('������� ᥠ�ᮢ: 1').wait_for();capture(page,'lab08_comedy.png');record('GWT RPC comedy',True)
+   record('Browser persistent cookies',len(cookies)==2 and any(c['name']=='cinemaName' and urllib.parse.unquote_plus(c['value'])=='Иван' for c in cookies))
+   page.goto('http://127.0.0.1:8080/lab08/');page.get_by_text('Найдено сеансов: 3').wait_for(timeout=60000);capture(page,'lab08_all.png')
+   page.locator('select').select_option('drama');page.get_by_role('button',name='Показать').click();page.get_by_text('Найдено сеансов: 2').wait_for();capture(page,'lab08_drama.png');record('GWT RPC drama',True)
+   page.locator('select').select_option('comedy');page.get_by_role('button',name='Показать').click();page.get_by_text('Найдено сеансов: 1').wait_for();capture(page,'lab08_comedy.png');record('GWT RPC comedy',True)
    browser.close()
  finally:
   server.terminate();server.wait(timeout=20);server_log.close()
