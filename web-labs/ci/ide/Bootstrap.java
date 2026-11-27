@@ -82,7 +82,7 @@ public final class Bootstrap implements IStartup {
   // Explicit bootstrap entries avoid an empty default WTP launch classpath.
   ILaunchConfigurationWorkingCopy launch=server.getLaunchConfiguration(true,new NullProgressMonitor()).getWorkingCopy();
   launch.setAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH,false);
-  launch.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,List.of(
+  launch.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,java.util.List.of(
    JavaRuntime.newArchiveRuntimeClasspathEntry(new org.eclipse.core.runtime.Path(TOMCAT+"/bin/bootstrap.jar")).getMemento(),
    JavaRuntime.newArchiveRuntimeClasspathEntry(new org.eclipse.core.runtime.Path(TOMCAT+"/bin/tomcat-juli.jar")).getMemento()));
   launch.doSave();
