@@ -31,9 +31,9 @@ public final class Bootstrap implements IStartup {
  }
  private static void ui(Runnable action) {Display.getDefault().syncExec(action);}
  @Override public void earlyStartup() {
-  Display.getDefault().timerExec(8000,()->new Thread(()->{
-   try {execute();}catch(Throwable e){StringWriter s=new StringWriter();e.printStackTrace(new PrintWriter(s));log(s.toString());ui(()->snap("lab01_eclipse_error.png"));try{Files.writeString(OUT.resolve("eclipse.failed"),s.toString());}catch(Exception ignored){}}
-  },"Lab IDE verification").start());
+  new Thread(()->{
+   try {Thread.sleep(8000);execute();}catch(Throwable e){StringWriter s=new StringWriter();e.printStackTrace(new PrintWriter(s));log(s.toString());ui(()->snap("lab01_eclipse_error.png"));try{Files.writeString(OUT.resolve("eclipse.failed"),s.toString());}catch(Exception ignored){}}
+  },"Lab IDE verification").start();
  }
  private void execute() throws Exception {
   Files.createDirectories(OUT);

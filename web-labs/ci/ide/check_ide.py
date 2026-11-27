@@ -10,7 +10,7 @@ def download(url,dest):
  with tarfile.open(dest) as tar:tar.extractall(R,filter='data')
 def main():
  download('https://archive.eclipse.org/technology/epp/downloads/release/2025-06/R/eclipse-jee-2025-06-R-linux-gtk-x86_64.tar.gz',R/'eclipse.tar.gz')
- download('https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.124/bin/apache-tomcat-9.0.124.tar.gz',R/'tomcat.tar.gz')
+ download('https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.124/bin/apache-tomcat-9.0.124.tar.gz',R/'tomcat.tar.gz')
  eclipse=R/'eclipse';tomcat=R/'apache-tomcat-9.0.124'
  # HTTP-only configuration for lab 1, separate from the TLS checks in lab 6.
  server_xml='''<?xml version="1.0" encoding="UTF-8"?>
@@ -24,7 +24,7 @@ def main():
  # The helper bundle drives the normal Eclipse server APIs and records actual UI images.
  classes=R/'helper-classes';classes.mkdir(exist_ok=True)
  cp=str(eclipse/'plugins/*')
- p=subprocess.run(['javac','-encoding','UTF-8','-cp',cp,'-d',str(classes),str(ROOT/'ci/ide/Bootstrap.java')],capture_output=True,text=True)
+ p=subprocess.run(['javac','-proc:none','-encoding','UTF-8','-cp',cp,'-d',str(classes),str(ROOT/'ci/ide/Bootstrap.java')],capture_output=True,text=True)
  (OUT/'helper-compile.log').write_text(p.stdout+p.stderr)
  if p.returncode:raise RuntimeError(p.stderr)
  manifest='''Manifest-Version: 1.0
